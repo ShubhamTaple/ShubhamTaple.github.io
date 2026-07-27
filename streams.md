@@ -3,10 +3,10 @@
 Hi all, here I would be documenting the idea and implementation logic of one of my contributions to Redis OSS.
 
 ## Background
-While reading a PR (https://github.com/redis/redis/pull/14897) which implemented the DB lifecycle of idempotent stream keys by Sergei Georgiev (Principal Software Engineer at Redis), I came across several doubts, two of which turned out to be things that could be made better. One of them is the current topic of discussion (https://github.com/redis/redis/pull/15000), and the other was to have a new dictionary type with only keys and no values (a set, essentially) for idempotent (IDMP) stream keys — this one I documented separately on my Medium blog.
+While reading a PR (https://github.com/redis/redis/pull/14897) which implemented the DB lifecycle of idempotent stream keys, I came across several doubts, two of which turned out to be things that could be made better. One of them is the current topic of discussion (https://github.com/redis/redis/pull/15000), and the other was to have a new dictionary type with only keys and no values (a set, essentially) for idempotent (IDMP) stream keys — this one I documented separately on my Medium blog.
 
 ## The idea
-In Sergei's PR, there was a helper function exposed from the core `db.c` file called `streamMoveIdmpKeys()`, which helped migrate IDMP stream keys from one dictionary to another during atomic slot migration.
+In PR #14897, there was a helper function exposed from the core `db.c` file called `streamMoveIdmpKeys()`, which helped migrate IDMP stream keys from one dictionary to another during atomic slot migration.
 
 **Function signature:**
 `void streamMoveIdmpKeys(dict *src, dict *dst, int slot)`
