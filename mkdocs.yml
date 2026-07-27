@@ -1,0 +1,13 @@
+site_name: OSS docs
+site_description: Docs of open source contributions
+site_author: Shubham S Taple
+
+theme:
+  name: readthedocs
+
+nav:
+  - Redis:
+      - Streams: redis/streams.md
+
+extra_css:
+  - ss/vintage.css
